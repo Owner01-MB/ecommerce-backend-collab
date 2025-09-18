@@ -67,6 +67,7 @@ public class AuthController {
       User user1 = (User) user.get();
       user1.setLastLoggedIn(LocalDateTime.now());
       userRepository.save(user1);
+      
     }
 
       return Map.of("token", token);
