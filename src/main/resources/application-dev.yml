@@ -12,6 +12,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
+    logging:
+      level:
+        org.hibernate.SQL: DEBUG
+        org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    file:
+      name: logs/ecommerce-app.log
 jwt:
   secret: Q3VzdG9tLVNwcmluZy1Cb290LUpXVFNlY3JldC1LZXktMjAyNQpBdXRoZW50aWNhdGlvbg==
