@@ -35,6 +35,15 @@ public class SecurityConfig {
     http
         .csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(auth -> auth
+            // 👇 allow swagger endpoints without JWT
+            .requestMatchers(
+                "/swagger-ui.html",
+                "/swagger-ui/**",
+                "/v3/api-docs/**",
+                "/v3/api-docs.yaml",
+                "/swagger-resources/**",
+                "/webjars/**"
+            ).permitAll()
             .requestMatchers("/auth/**").permitAll()
             .anyRequest().authenticated()
         )
