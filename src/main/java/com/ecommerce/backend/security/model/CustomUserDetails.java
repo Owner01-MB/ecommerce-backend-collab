@@ -1,4 +1,4 @@
-package com.ecommerce.backend.Security.model;
+package com.ecommerce.backend.security.model;
 
 import com.ecommerce.backend.model.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
 
-   private final User user; // wrap your User entity
+  private final User user; // wrap your User entity
 
   public CustomUserDetails(User user) {
     this.user = user;

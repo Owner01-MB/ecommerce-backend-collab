@@ -13,21 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class CartController {
 
 
-    @Autowired
-    private CartService cartService;
+  @Autowired
+  private CartService cartService;
 
-    @PostMapping("/saveOrUpdateCart")
-    public ResponseEntity<?> saveOrUpdateCart(@RequestBody Cart cart){
-        return new ResponseEntity<>(cartService.saveOrUpdateCart(cart), HttpStatus.OK);
-    }
+  @PostMapping("/saveOrUpdateCart")
+  public ResponseEntity<?> saveOrUpdateCart(@RequestBody Cart cart) {
+    return new ResponseEntity<>(cartService.saveOrUpdateCart(cart), HttpStatus.OK);
+  }
 
-    @GetMapping("/getAllCarts")
-    public ResponseEntity<?> getAllCart(){
-        return new ResponseEntity<>(cartService.getAllCart(), HttpStatus.FOUND);
-    }
+  @GetMapping("/getAllCarts")
+  public ResponseEntity<?> getAllCart() {
+    return new ResponseEntity<>(cartService.getAllCart(), HttpStatus.FOUND);
+  }
 
-    @PostMapping("/deleteCart/{id}")
-    public void deleteCartById(@PathVariable Long id) throws Exception {
-        cartService.deleteCartById(id);
-    }
+  @PostMapping("/deleteCart/{id}")
+  public void deleteCartById(@PathVariable Long id) throws Exception {
+    cartService.deleteCartById(id);
+  }
 }

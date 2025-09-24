@@ -1,6 +1,6 @@
 package com.ecommerce.backend.controller;
 
-import com.ecommerce.backend.Security.jwt.JwtService;
+import com.ecommerce.backend.security.jwt.JwtService;
 import com.ecommerce.backend.dto.UserRegistrationDto;
 import com.ecommerce.backend.enums.Role;
 import com.ecommerce.backend.model.User;
@@ -28,12 +28,14 @@ public class AuthController {
   private final UserRepository userRepository;
   private final BCryptPasswordEncoder passwordEncoder;
 
-  public AuthController(AuthenticationManager authenticationManager, JwtService jwtService,UserRepository userRepository,BCryptPasswordEncoder passwordEncoder) {
+  public AuthController(AuthenticationManager authenticationManager, JwtService jwtService,
+      UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
     this.authenticationManager = authenticationManager;
     this.jwtService = jwtService;
-    this.userRepository=userRepository;
-        this.passwordEncoder=passwordEncoder;
+    this.userRepository = userRepository;
+    this.passwordEncoder = passwordEncoder;
   }
+
   @PostMapping("/register")
   public String register(@RequestBody UserRegistrationDto dto) {
     if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
@@ -62,13 +64,13 @@ public class AuthController {
       );
 
       String token = jwtService.generateToken(auth.getName());
-    Optional<Object> user=userRepository.findByEmail(email);
-    if (user.isPresent()) {
-      User user1 = (User) user.get();
-      user1.setLastLoggedIn(LocalDateTime.now());
-      userRepository.save(user1);
-      
-    }
+      Optional<Object> user = userRepository.findByEmail(email);
+      if (user.isPresent()) {
+        User user1 = (User) user.get();
+        user1.setLastLoggedIn(LocalDateTime.now());
+        userRepository.save(user1);
+
+      }
 
       return Map.of("token", token);
 

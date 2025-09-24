@@ -23,12 +23,12 @@ public class AdminController {
 
   @PutMapping("/changeRole")
   @PreAuthorize("hasRole('ADMIN')")
-  public String changeTheRole(@RequestParam String email, @RequestParam String role){
+  public String changeTheRole(@RequestParam String email, @RequestParam String role) {
     try {
       Optional<Object> byEmail = userRepository.findByEmail(email);
-      if(byEmail.isPresent()){
-        User user    = (User)byEmail.get();
-        Role userRole =Role.valueOf(role.toUpperCase());
+      if (byEmail.isPresent()) {
+        User user = (User) byEmail.get();
+        Role userRole = Role.valueOf(role.toUpperCase());
         user.setRole(userRole);
         userRepository.save(user);
       }

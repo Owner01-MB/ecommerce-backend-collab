@@ -11,43 +11,43 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartItem {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long cartItemId;
-	private Integer quantity;
-	private double discount;
-	private double productPrice;
 
-	public Long getCartItemId() {
-		return cartItemId;
-	}
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long cartItemId;
+  private Integer quantity;
+  private double discount;
+  private double productPrice;
 
-	public void setCartItemId(Long cartItemId) {
-		this.cartItemId = cartItemId;
-	}
+  public Long getCartItemId() {
+    return cartItemId;
+  }
 
-	public Integer getQuantity() {
-		return quantity;
-	}
+  public void setCartItemId(Long cartItemId) {
+    this.cartItemId = cartItemId;
+  }
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
+  public Integer getQuantity() {
+    return quantity;
+  }
 
-	public double getDiscount() {
-		return discount;
-	}
+  public void setQuantity(Integer quantity) {
+    this.quantity = quantity;
+  }
 
-	public void setDiscount(double discount) {
-		this.discount = discount;
-	}
+  public double getDiscount() {
+    return discount;
+  }
 
-	public double getProductPrice() {
-		return productPrice;
-	}
+  public void setDiscount(double discount) {
+    this.discount = discount;
+  }
 
-	public void setProductPrice(double productPrice) {
-		this.productPrice = productPrice;
-	}
+  public double getProductPrice() {
+    return productPrice;
+  }
+
+  public void setProductPrice(double productPrice) {
+    this.productPrice = productPrice;
+  }
 }

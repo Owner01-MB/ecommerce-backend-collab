@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
 
 
-    @Autowired
-    private ProductService productService;
+  @Autowired
+  private ProductService productService;
 
-    @PostMapping("/saveOrUpdateProduct")
-    public ResponseEntity<?> saveOrUpdateProduct(@RequestBody Product product){
-        return new ResponseEntity<>(productService.saveOrUpdateProduct(product), HttpStatus.OK);
-    }
+  @PostMapping("/saveOrUpdateProduct")
+  public ResponseEntity<?> saveOrUpdateProduct(@RequestBody Product product) {
+    return new ResponseEntity<>(productService.saveOrUpdateProduct(product), HttpStatus.OK);
+  }
 
-    @GetMapping("/getAllProducts")
-    public ResponseEntity<?> getAllProduct(){
-        return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.FOUND);
-    }
+  @GetMapping("/getAllProducts")
+  public ResponseEntity<?> getAllProduct() {
+    return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.FOUND);
+  }
 
-    @PostMapping("/deleteProduct/{id}")
-    public void deleteProductById(@PathVariable Long id) throws Exception {
-        productService.deleteProductById(id);
-    }
+  @PostMapping("/deleteProduct/{id}")
+  public void deleteProductById(@PathVariable Long id) throws Exception {
+    productService.deleteProductById(id);
+  }
 }

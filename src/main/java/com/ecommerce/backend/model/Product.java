@@ -11,78 +11,79 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long productId;
-	private String productName;
-	private String image;
-	private String description;
-	private Integer quantity;
-	private double price;
-	private double discount;
-	private double specialPrice;
 
-	public double getSpecialPrice() {
-		return specialPrice;
-	}
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long productId;
+  private String productName;
+  private String image;
+  private String description;
+  private Integer quantity;
+  private double price;
+  private double discount;
+  private double specialPrice;
 
-	public void setSpecialPrice(double specialPrice) {
-		this.specialPrice = specialPrice;
-	}
+  public double getSpecialPrice() {
+    return specialPrice;
+  }
 
-	public double getDiscount() {
-		return discount;
-	}
+  public void setSpecialPrice(double specialPrice) {
+    this.specialPrice = specialPrice;
+  }
 
-	public void setDiscount(double discount) {
-		this.discount = discount;
-	}
+  public double getDiscount() {
+    return discount;
+  }
 
-	public double getPrice() {
-		return price;
-	}
+  public void setDiscount(double discount) {
+    this.discount = discount;
+  }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+  public double getPrice() {
+    return price;
+  }
 
-	public Integer getQuantity() {
-		return quantity;
-	}
+  public void setPrice(double price) {
+    this.price = price;
+  }
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
+  public Integer getQuantity() {
+    return quantity;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public void setQuantity(Integer quantity) {
+    this.quantity = quantity;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public String getImage() {
-		return image;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+  public String getImage() {
+    return image;
+  }
 
-	public String getProductName() {
-		return productName;
-	}
+  public void setImage(String image) {
+    this.image = image;
+  }
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+  public String getProductName() {
+    return productName;
+  }
 
-	public Long getProductId() {
-		return productId;
-	}
+  public void setProductName(String productName) {
+    this.productName = productName;
+  }
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
+  public Long getProductId() {
+    return productId;
+  }
+
+  public void setProductId(Long productId) {
+    this.productId = productId;
+  }
 }

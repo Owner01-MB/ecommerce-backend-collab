@@ -9,19 +9,22 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AddressController {
-        @Autowired
-        private AddressService addressService;
 
-        @PostMapping("/saveOrUpdateAddress")
-        public ResponseEntity<?> saveOrUpdateAddress(@RequestBody Address address){
-            return new ResponseEntity<>(addressService.saveOrUpdateAddress(address), HttpStatus.OK);
-        }
-        @GetMapping("/getAllAddress")
-        public ResponseEntity<?> getAllAddress(){
-            return new ResponseEntity<>(addressService.getAllAddress(),HttpStatus.FOUND);
-        }
-        @PostMapping("/deleteAddress/{Id}")
-        public void deleteAddressById(@PathVariable Long id) throws Exception {
-            addressService.deleteAddressById(id) ;
-        }
-    }
+  @Autowired
+  private AddressService addressService;
+
+  @PostMapping("/saveOrUpdateAddress")
+  public ResponseEntity<?> saveOrUpdateAddress(@RequestBody Address address) {
+    return new ResponseEntity<>(addressService.saveOrUpdateAddress(address), HttpStatus.OK);
+  }
+
+  @GetMapping("/getAllAddress")
+  public ResponseEntity<?> getAllAddress() {
+    return new ResponseEntity<>(addressService.getAllAddress(), HttpStatus.FOUND);
+  }
+
+  @PostMapping("/deleteAddress/{Id}")
+  public void deleteAddressById(@PathVariable Long id) throws Exception {
+    addressService.deleteAddressById(id);
+  }
+}

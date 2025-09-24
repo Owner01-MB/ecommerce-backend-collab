@@ -4,24 +4,25 @@ import lombok.Data;
 
 @Data
 public class LogInRequest {
-    private String email;
-    private String password;
 
-    // Getter and Setter for email
-    public String getEmail() {
-        return email;
-    }
+  private String email;
+  private String password;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  // Getter and Setter for email
+  public String getEmail() {
+    return email;
+  }
 
-    // Getter and Setter for password
-    public String getPassword() {
-        return password;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  // Getter and Setter for password
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 }

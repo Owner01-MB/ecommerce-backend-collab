@@ -10,41 +10,42 @@ import java.util.Optional;
 
 @Service
 public class AddressService implements AddressImpl {
-    @Autowired
-    private AddressRepo addressRepo;
 
-    @Override
-    public Object saveOrUpdateAddress(Address address) {
-        if (address.getAddressId() != null && addressRepo.existsById(address.getAddressId())) {
-            Address existingAddress = addressRepo.findById(address.getAddressId()).get();
+  @Autowired
+  private AddressRepo addressRepo;
 
-            existingAddress.setStreet(address.getStreet());
-            existingAddress.setBuildingName(address.getBuildingName());
-            existingAddress.setCity(address.getCity());
-            existingAddress.setState(address.getState());
-            existingAddress.setCountry(address.getCountry());
-            existingAddress.setPincode(address.getPincode());
+  @Override
+  public Object saveOrUpdateAddress(Address address) {
+    if (address.getAddressId() != null && addressRepo.existsById(address.getAddressId())) {
+      Address existingAddress = addressRepo.findById(address.getAddressId()).get();
 
-            addressRepo.save(existingAddress);
-            return "Updated Successfully!!!";
-        } else {
-            addressRepo.save(address);
-            return "Inserted Successfully!!!";
-        }
+      existingAddress.setStreet(address.getStreet());
+      existingAddress.setBuildingName(address.getBuildingName());
+      existingAddress.setCity(address.getCity());
+      existingAddress.setState(address.getState());
+      existingAddress.setCountry(address.getCountry());
+      existingAddress.setPincode(address.getPincode());
+
+      addressRepo.save(existingAddress);
+      return "Updated Successfully!!!";
+    } else {
+      addressRepo.save(address);
+      return "Inserted Successfully!!!";
     }
+  }
 
-    @Override
-    public Object getAllAddress() {
-        return addressRepo.findAll();
-    }
+  @Override
+  public Object getAllAddress() {
+    return addressRepo.findAll();
+  }
 
-    @Override
-    public void deleteAddressById(Long id) throws Exception {
-        Optional<Address> optional = addressRepo.findById(id);
-        if (optional.isPresent()) {
-            addressRepo.deleteById(id);
-        } else {
-            throw new Exception("Id not Found!!!");
-        }
+  @Override
+  public void deleteAddressById(Long id) throws Exception {
+    Optional<Address> optional = addressRepo.findById(id);
+    if (optional.isPresent()) {
+      addressRepo.deleteById(id);
+    } else {
+      throw new Exception("Id not Found!!!");
     }
+  }
 }

@@ -13,51 +13,52 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long orderId;
-	private String email;
-	private LocalDate orderDate;
-	private Double totalAmount;
-	private String orderStatus;
 
-	public Long getOrderId() {
-		return orderId;
-	}
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long orderId;
+  private String email;
+  private LocalDate orderDate;
+  private Double totalAmount;
+  private String orderStatus;
 
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
-	}
+  public Long getOrderId() {
+    return orderId;
+  }
 
-	public String getEmail() {
-		return email;
-	}
+  public void setOrderId(Long orderId) {
+    this.orderId = orderId;
+  }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  public String getEmail() {
+    return email;
+  }
 
-	public LocalDate getOrderDate() {
-		return orderDate;
-	}
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-	public void setOrderDate(LocalDate orderDate) {
-		this.orderDate = orderDate;
-	}
+  public LocalDate getOrderDate() {
+    return orderDate;
+  }
 
-	public Double getTotalAmount() {
-		return totalAmount;
-	}
+  public void setOrderDate(LocalDate orderDate) {
+    this.orderDate = orderDate;
+  }
 
-	public void setTotalAmount(Double totalAmount) {
-		this.totalAmount = totalAmount;
-	}
+  public Double getTotalAmount() {
+    return totalAmount;
+  }
 
-	public String getOrderStatus() {
-		return orderStatus;
-	}
+  public void setTotalAmount(Double totalAmount) {
+    this.totalAmount = totalAmount;
+  }
 
-	public void setOrderStatus(String orderStatus) {
-		this.orderStatus = orderStatus;
-	}
+  public String getOrderStatus() {
+    return orderStatus;
+  }
+
+  public void setOrderStatus(String orderStatus) {
+    this.orderStatus = orderStatus;
+  }
 }

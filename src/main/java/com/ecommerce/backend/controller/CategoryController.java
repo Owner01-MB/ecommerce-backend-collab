@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CategoryController {
 
-    @Autowired
-    private CategoryService categoryService;
+  @Autowired
+  private CategoryService categoryService;
 
-    @PostMapping("/saveOrUpdateCategory")
-    public ResponseEntity<?> saveOrUpdateCategory(@RequestBody Category category){
-        return new ResponseEntity<>(categoryService.saveOrUpdateCategory(category), HttpStatus.OK);
-    }
+  @PostMapping("/saveOrUpdateCategory")
+  public ResponseEntity<?> saveOrUpdateCategory(@RequestBody Category category) {
+    return new ResponseEntity<>(categoryService.saveOrUpdateCategory(category), HttpStatus.OK);
+  }
 
-    @GetMapping("/getAllCategories")
-    public ResponseEntity<?> getAllCategory(){
-        return new ResponseEntity<>(categoryService.getAllCategory(), HttpStatus.FOUND);
-    }
+  @GetMapping("/getAllCategories")
+  public ResponseEntity<?> getAllCategory() {
+    return new ResponseEntity<>(categoryService.getAllCategory(), HttpStatus.FOUND);
+  }
 
-    @PostMapping("/deleteCategory/{id}")
-    public void deleteCategoryById(@PathVariable Long id) throws Exception {
-        categoryService.deleteCategoryById(id);
-    }
+  @PostMapping("/deleteCategory/{id}")
+  public void deleteCategoryById(@PathVariable Long id) throws Exception {
+    categoryService.deleteCategoryById(id);
+  }
 }

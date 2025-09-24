@@ -10,42 +10,43 @@ import java.util.Optional;
 
 @Service
 public class ProductService implements ProductImpl {
-    @Autowired
-    private ProductRepo productRepo;
 
-        @Override
-        public Object saveOrUpdateProduct(Product product) {
-            if (product.getProductId() != null && productRepo.existsById(product.getProductId())) {
-                Product existingProduct = productRepo.findById(product.getProductId()).get();
+  @Autowired
+  private ProductRepo productRepo;
 
-                existingProduct.setProductName(product.getProductName());
-                existingProduct.setImage(product.getImage());
-                existingProduct.setDescription(product.getDescription());
-                existingProduct.setQuantity(product.getQuantity());
-                existingProduct.setPrice(product.getPrice());
-                existingProduct.setDiscount(product.getDiscount());
-                existingProduct.setSpecialPrice(product.getSpecialPrice());
+  @Override
+  public Object saveOrUpdateProduct(Product product) {
+    if (product.getProductId() != null && productRepo.existsById(product.getProductId())) {
+      Product existingProduct = productRepo.findById(product.getProductId()).get();
 
-                productRepo.save(existingProduct);
-                return "Updated Successfully!!!";
-            } else {
-                productRepo.save(product);
-                return "Inserted Successfully!!!";
-            }
-        }
+      existingProduct.setProductName(product.getProductName());
+      existingProduct.setImage(product.getImage());
+      existingProduct.setDescription(product.getDescription());
+      existingProduct.setQuantity(product.getQuantity());
+      existingProduct.setPrice(product.getPrice());
+      existingProduct.setDiscount(product.getDiscount());
+      existingProduct.setSpecialPrice(product.getSpecialPrice());
 
-        @Override
-        public Object getAllProduct() {
-            return productRepo.findAll();
-        }
+      productRepo.save(existingProduct);
+      return "Updated Successfully!!!";
+    } else {
+      productRepo.save(product);
+      return "Inserted Successfully!!!";
+    }
+  }
 
-        @Override
-        public void deleteProductById(Long id) throws Exception {
-            Optional<Product> optional = productRepo.findById(id);
-            if (optional.isPresent()) {
-                productRepo.deleteById(id);
-            } else {
-                throw new Exception("Id not Found!!!");
-            }
-        }
+  @Override
+  public Object getAllProduct() {
+    return productRepo.findAll();
+  }
+
+  @Override
+  public void deleteProductById(Long id) throws Exception {
+    Optional<Product> optional = productRepo.findById(id);
+    if (optional.isPresent()) {
+      productRepo.deleteById(id);
+    } else {
+      throw new Exception("Id not Found!!!");
+    }
+  }
 }

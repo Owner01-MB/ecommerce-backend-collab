@@ -1,6 +1,6 @@
 package com.ecommerce.backend.security.service;
 
-import com.ecommerce.backend.Security.model.CustomUserDetails;
+import com.ecommerce.backend.security.model.CustomUserDetails;
 import com.ecommerce.backend.model.User;
 import com.ecommerce.backend.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;

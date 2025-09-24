@@ -10,38 +10,39 @@ import java.util.Optional;
 
 @Service
 public class CartItemService implements CartItemImpl {
-    @Autowired
-    private CartItemRepo cartItemRepo;
 
-    @Override
-    public Object saveOrUpdateCartItem(CartItem cartItem) {
-        if (cartItem.getCartItemId() != null && cartItemRepo.existsById(cartItem.getCartItemId())) {
-            CartItem existingCartItem = cartItemRepo.findById(cartItem.getCartItemId()).get();
+  @Autowired
+  private CartItemRepo cartItemRepo;
 
-            existingCartItem.setQuantity(cartItem.getQuantity());
-            existingCartItem.setDiscount(cartItem.getDiscount());
-            existingCartItem.setProductPrice(cartItem.getProductPrice());
+  @Override
+  public Object saveOrUpdateCartItem(CartItem cartItem) {
+    if (cartItem.getCartItemId() != null && cartItemRepo.existsById(cartItem.getCartItemId())) {
+      CartItem existingCartItem = cartItemRepo.findById(cartItem.getCartItemId()).get();
 
-            cartItemRepo.save(existingCartItem);
-            return "Updated Successfully!!!";
-        } else {
-            cartItemRepo.save(cartItem);
-            return "Inserted Successfully!!!";
-        }
+      existingCartItem.setQuantity(cartItem.getQuantity());
+      existingCartItem.setDiscount(cartItem.getDiscount());
+      existingCartItem.setProductPrice(cartItem.getProductPrice());
+
+      cartItemRepo.save(existingCartItem);
+      return "Updated Successfully!!!";
+    } else {
+      cartItemRepo.save(cartItem);
+      return "Inserted Successfully!!!";
     }
+  }
 
-    @Override
-    public Object getAllCartItem() {
-        return cartItemRepo.findAll();
-    }
+  @Override
+  public Object getAllCartItem() {
+    return cartItemRepo.findAll();
+  }
 
-    @Override
-    public void deleteCartItemById(Long id) throws Exception {
-        Optional<CartItem> optional = cartItemRepo.findById(id);
-        if (optional.isPresent()) {
-            cartItemRepo.deleteById(id);
-        } else {
-            throw new Exception("Id not Found!!!");
-        }
+  @Override
+  public void deleteCartItemById(Long id) throws Exception {
+    Optional<CartItem> optional = cartItemRepo.findById(id);
+    if (optional.isPresent()) {
+      cartItemRepo.deleteById(id);
+    } else {
+      throw new Exception("Id not Found!!!");
     }
+  }
 }

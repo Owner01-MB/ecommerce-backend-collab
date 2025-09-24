@@ -1,4 +1,5 @@
 package com.ecommerce.backend.controller;
+
 import com.ecommerce.backend.model.User;
 import com.ecommerce.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,22 +14,22 @@ import java.time.LocalTime;
 @RestController
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+  @Autowired
+  private UserService userService;
 
-    @PostMapping("/saveOrUpdateUser")
-    public ResponseEntity<?> saveOrUpdateUser(@RequestBody User user){
-        return new ResponseEntity<>(userService.saveOrUpdateUser(user), HttpStatus.OK);
-    }
+  @PostMapping("/saveOrUpdateUser")
+  public ResponseEntity<?> saveOrUpdateUser(@RequestBody User user) {
+    return new ResponseEntity<>(userService.saveOrUpdateUser(user), HttpStatus.OK);
+  }
 
-    @GetMapping("/getAllUsers")
-    public ResponseEntity<?> getAllUser(){
-        return new ResponseEntity<>(userService.getAllUser(), HttpStatus.FOUND);
-    }
+  @GetMapping("/getAllUsers")
+  public ResponseEntity<?> getAllUser() {
+    return new ResponseEntity<>(userService.getAllUser(), HttpStatus.FOUND);
+  }
 
-    @PostMapping("/deleteUser/{id}")
-    public void deleteUserById(@PathVariable Long id) throws Exception {
-        userService.deleteUserById(id);
-    }
+  @PostMapping("/deleteUser/{id}")
+  public void deleteUserById(@PathVariable Long id) throws Exception {
+    userService.deleteUserById(id);
+  }
 
 }
