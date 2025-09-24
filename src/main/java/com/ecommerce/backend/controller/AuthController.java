@@ -1,23 +1,20 @@
 package com.ecommerce.backend.controller;
 
+import com.ecommerce.backend.Security.jwt.JwtService;
 import com.ecommerce.backend.dto.UserRegistrationDto;
 import com.ecommerce.backend.enums.Role;
 import com.ecommerce.backend.model.User;
 import com.ecommerce.backend.repository.UserRepository;
-import com.ecommerce.backend.security.jwt.JwtService;
-import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.Optional;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")

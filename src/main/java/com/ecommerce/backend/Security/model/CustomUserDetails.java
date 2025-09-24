@@ -1,7 +1,6 @@
-package com.ecommerce.backend.security.model;
+package com.ecommerce.backend.Security.model;
 
 import com.ecommerce.backend.model.User;
-import com.ecommerce.backend.enums.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

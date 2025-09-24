@@ -3,13 +3,13 @@ package com.ecommerce.backend.controller;
 import com.ecommerce.backend.enums.Role;
 import com.ecommerce.backend.model.User;
 import com.ecommerce.backend.repository.UserRepository;
-import java.util.Optional;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/admin")

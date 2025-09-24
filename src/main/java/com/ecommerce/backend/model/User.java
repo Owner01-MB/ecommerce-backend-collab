@@ -1,9 +1,9 @@
 package com.ecommerce.backend.model;
 
-
 import com.ecommerce.backend.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDateTime;
 
 @Entity

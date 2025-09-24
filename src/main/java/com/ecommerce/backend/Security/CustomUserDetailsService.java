@@ -1,8 +1,8 @@
-package com.ecommerce.backend.security.service;
+package com.ecommerce.backend.Security;
 
+import com.ecommerce.backend.Security.model.CustomUserDetails;
 import com.ecommerce.backend.model.User;
 import com.ecommerce.backend.repository.UserRepository;
-import com.ecommerce.backend.security.model.CustomUserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
