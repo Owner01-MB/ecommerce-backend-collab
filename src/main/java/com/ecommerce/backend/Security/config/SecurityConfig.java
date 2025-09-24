@@ -1,6 +1,6 @@
-package com.ecommerce.backend.Security.config;
+package com.ecommerce.backend.security.config;
 
-import com.ecommerce.backend.Security.jwt.JwtAuthenticationFilter;
+import com.ecommerce.backend.security.jwt.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;

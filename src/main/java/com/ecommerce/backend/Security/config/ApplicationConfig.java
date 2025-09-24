@@ -1,6 +1,6 @@
-package com.ecommerce.backend.Security.config;
+package com.ecommerce.backend.security.config;
 
-import com.ecommerce.backend.Security.CustomUserDetailsService;
+import com.ecommerce.backend.security.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

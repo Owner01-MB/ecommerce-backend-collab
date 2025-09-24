@@ -1,4 +1,4 @@
-package com.ecommerce.backend.Security;
+package com.ecommerce.backend.security.service;
 
 import com.ecommerce.backend.Security.model.CustomUserDetails;
 import com.ecommerce.backend.model.User;
