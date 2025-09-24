@@ -19,7 +19,8 @@ public class SecurityConfig {
   private final JwtAuthenticationFilter jwtAuthFilter;
   private final AuthenticationProvider authenticationProvider;
 
-  public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter, AuthenticationProvider authenticationProvider) {
+  public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter,
+      AuthenticationProvider authenticationProvider) {
     this.jwtAuthFilter = jwtAuthFilter;
     this.authenticationProvider = authenticationProvider;
   }
@@ -41,7 +42,8 @@ public class SecurityConfig {
             .requestMatchers("/auth/**").permitAll()
             .anyRequest().authenticated()
         )
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .sessionManagement(
+            session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authenticationProvider(authenticationProvider)
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 

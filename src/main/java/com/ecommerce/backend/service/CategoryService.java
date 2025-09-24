@@ -11,36 +11,37 @@ import java.util.Optional;
 
 @Service
 public class CategoryService implements CategoryImpl {
-    @Autowired
-    private CategoryRepo categoryRepo;
 
-    @Override
-    public Object saveOrUpdateCategory(Category category) {
-        if (category.getCategoryId() != null && categoryRepo.existsById(category.getCategoryId())) {
-            Category existingCategory = categoryRepo.findById(category.getCategoryId()).get();
+  @Autowired
+  private CategoryRepo categoryRepo;
 
-            existingCategory.setCategoryName(category.getCategoryName());
+  @Override
+  public Object saveOrUpdateCategory(Category category) {
+    if (category.getCategoryId() != null && categoryRepo.existsById(category.getCategoryId())) {
+      Category existingCategory = categoryRepo.findById(category.getCategoryId()).get();
 
-            categoryRepo.save(existingCategory);
-            return "Updated Successfully!!!";
-        } else {
-            categoryRepo.save(category);
-            return "Inserted Successfully!!!";
-        }
+      existingCategory.setCategoryName(category.getCategoryName());
+
+      categoryRepo.save(existingCategory);
+      return "Updated Successfully!!!";
+    } else {
+      categoryRepo.save(category);
+      return "Inserted Successfully!!!";
     }
+  }
 
-    @Override
-    public Object getAllCategory() {
-        return categoryRepo.findAll();
-    }
+  @Override
+  public Object getAllCategory() {
+    return categoryRepo.findAll();
+  }
 
-    @Override
-    public void deleteCategoryById(Long id) throws Exception {
-        Optional<Category> optional = categoryRepo.findById(id);
-        if (optional.isPresent()) {
-            categoryRepo.deleteById(id);
-        } else {
-            throw new Exception("Id not Found!!!");
-        }
+  @Override
+  public void deleteCategoryById(Long id) throws Exception {
+    Optional<Category> optional = categoryRepo.findById(id);
+    if (optional.isPresent()) {
+      categoryRepo.deleteById(id);
+    } else {
+      throw new Exception("Id not Found!!!");
     }
+  }
 }

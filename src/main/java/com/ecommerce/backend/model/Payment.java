@@ -12,24 +12,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Payment {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long paymentId;
-	private String paymentMethod;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long paymentId;
+  private String paymentMethod;
 
-	public Long getPaymentId() {
-		return paymentId;
-	}
+  public Long getPaymentId() {
+    return paymentId;
+  }
 
-	public void setPaymentId(Long paymentId) {
-		this.paymentId = paymentId;
-	}
+  public void setPaymentId(Long paymentId) {
+    this.paymentId = paymentId;
+  }
 
-	public String getPaymentMethod() {
-		return paymentMethod;
-	}
+  public String getPaymentMethod() {
+    return paymentMethod;
+  }
 
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
+  public void setPaymentMethod(String paymentMethod) {
+    this.paymentMethod = paymentMethod;
+  }
 }

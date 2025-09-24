@@ -12,24 +12,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Cart {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long cartId;
-	private Double totalPrice;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long cartId;
+  private Double totalPrice;
 
-	public Long getCartId() {
-		return cartId;
-	}
+  public Long getCartId() {
+    return cartId;
+  }
 
-	public void setCartId(Long cartId) {
-		this.cartId = cartId;
-	}
+  public void setCartId(Long cartId) {
+    this.cartId = cartId;
+  }
 
-	public Double getTotalPrice() {
-		return totalPrice;
-	}
+  public Double getTotalPrice() {
+    return totalPrice;
+  }
 
-	public void setTotalPrice(Double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+  public void setTotalPrice(Double totalPrice) {
+    this.totalPrice = totalPrice;
+  }
 }
