@@ -1,7 +1,7 @@
 package com.ecommerce.backend.security.jwt;
 
 import com.ecommerce.backend.Security.jwt.JwtService;
-import com.ecommerce.backend.security.service.CustomUserDetailsService;
+import com.ecommerce.backend.Security.service.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
