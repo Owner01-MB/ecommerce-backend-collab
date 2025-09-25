@@ -1,9 +1,12 @@
 package com.ecommerce.backend.service.serviceImpl;
 
+import com.ecommerce.backend.dto.AddressDto;
 import com.ecommerce.backend.model.Address;
 
+import java.util.List;
+
 public interface AddressImpl {
-    public Object saveOrUpdateAddress(Address address);
-    public Object getAllAddress();
-    public void deleteAddressById(Long id) throws Exception;
+    Object saveOrUpdateAddress(AddressDto addressDto);
+    List<AddressDto> getAllAddress();
+    void deleteAddressById(Long id) throws Exception;;
 }

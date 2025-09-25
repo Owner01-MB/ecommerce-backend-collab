@@ -4,9 +4,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ecommerce_backend
-    username: spring_user
-    password: sonab@26
+    url: jdbc:mysql://localhost:3306/ecommerce
+    username: root
+    password: oms123
 
   jpa:
     hibernate:
@@ -33,7 +33,7 @@ server:
   port: 8080
 
 jwt:
-  secret: Rfok+jCPCD3fR0Bau5FPRrt/+I5g8S+k37pdUWP/6m4=
+  secret: HexkXJFc2QUSAr1lY83kK8V6jfFFA9JG6RxwRWKaftY=
 
 logging:
   level:

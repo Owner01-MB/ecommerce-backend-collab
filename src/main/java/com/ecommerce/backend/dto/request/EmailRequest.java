@@ -1,4 +1,4 @@
-package com.ecommerce.backend.model.Request;
+package com.ecommerce.backend.dto.request;
 
 import lombok.Data;
 

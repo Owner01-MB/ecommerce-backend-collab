@@ -1,9 +1,12 @@
 package com.ecommerce.backend.service.serviceImpl;
 
+import com.ecommerce.backend.dto.ProductDto;
 import com.ecommerce.backend.model.Product;
 
+import java.util.List;
+
 public interface ProductImpl {
-    public Object saveOrUpdateProduct(Product product);
-    public Object getAllProduct();
-    public void deleteProductById(Long id) throws Exception;
+    Object saveOrUpdateProduct(ProductDto productDto);
+    List<ProductDto> getAllProducts();
+    void deleteProductById(Long id) throws Exception;
 }

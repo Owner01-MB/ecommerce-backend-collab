@@ -1,9 +1,12 @@
 package com.ecommerce.backend.service.serviceImpl;
 
+import com.ecommerce.backend.dto.CartItemDto;
 import com.ecommerce.backend.model.CartItem;
 
+import java.util.List;
+
 public interface CartItemImpl {
-    public Object saveOrUpdateCartItem(CartItem cartItem);
-    public Object getAllCartItem();
-    public void deleteCartItemById(Long id) throws Exception;
+    Object saveOrUpdateCartItem(CartItemDto cartItemDto);
+    List<CartItemDto> getAllCartItems();
+    void deleteCartItemById(Long id) throws Exception;
 }

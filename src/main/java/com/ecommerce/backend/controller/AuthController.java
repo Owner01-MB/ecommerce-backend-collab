@@ -1,7 +1,7 @@
 package com.ecommerce.backend.controller;
 
 import com.ecommerce.backend.security.jwt.JwtService;
-import com.ecommerce.backend.dto.UserRegistrationDto;
+import com.ecommerce.backend.dto.UserDto;
 import com.ecommerce.backend.enums.Role;
 import com.ecommerce.backend.model.User;
 import com.ecommerce.backend.repository.UserRepository;;
@@ -37,7 +37,7 @@ public class AuthController {
   }
 
   @PostMapping("/register")
-  public String register(@RequestBody UserRegistrationDto dto) {
+  public String register(@RequestBody UserDto dto) {
     if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
       return "Email already registered!";
     }

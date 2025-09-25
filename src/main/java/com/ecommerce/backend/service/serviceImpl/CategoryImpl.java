@@ -1,9 +1,12 @@
 package com.ecommerce.backend.service.serviceImpl;
 
+import com.ecommerce.backend.dto.CategoryDto;
 import com.ecommerce.backend.model.Category;
 
+import java.util.List;
+
 public interface CategoryImpl {
-    public Object saveOrUpdateCategory(Category category);
-    public Object getAllCategory();
-    public void deleteCategoryById(Long id) throws Exception;
+    Object saveOrUpdateCategory(CategoryDto categoryDto);
+    List<CategoryDto> getAllCategories();
+    void deleteCategoryById(Long id) throws Exception;
 }

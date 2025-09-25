@@ -24,7 +24,7 @@ public class JwtService {
 
   private Key signingKey;
 
-  private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
+  private static final long EXPIRATION_TIME = 4000 * 60 * 60; // 4 hour
 
   @PostConstruct
   public void init() {
