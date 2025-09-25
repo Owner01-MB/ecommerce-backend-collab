@@ -1,8 +1,6 @@
 package com.ecommerce.backend.security.config;
 
-import com.ecommerce.backend.security.service.CustomUserDetailsService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.ecommerce.backend.security.Service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,8 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class ApplicationConfig {
 
-  private static final Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
-
   private final CustomUserDetailsService userDetailsService;
 
   public ApplicationConfig(CustomUserDetailsService userDetailsService) {
@@ -25,7 +21,6 @@ public class ApplicationConfig {
 
   @Bean
   public AuthenticationProvider authenticationProvider() {
-    logger.info("Initializing DaoAuthenticationProvider with CustomUserDetailsService and BCryptPasswordEncoder");
     DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
     authProvider.setUserDetailsService(userDetailsService);
     authProvider.setPasswordEncoder(passwordEncoder());
@@ -33,14 +28,13 @@ public class ApplicationConfig {
   }
 
   @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-    logger.info("Exposing AuthenticationManager bean");
+  public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
+      throws Exception {
     return config.getAuthenticationManager();
   }
 
   @Bean
   public PasswordEncoder passwordEncoder() {
-    logger.info("Creating BCryptPasswordEncoder bean");
     return new BCryptPasswordEncoder();
   }
 }

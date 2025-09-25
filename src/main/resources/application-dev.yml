@@ -11,12 +11,18 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
-    logging:
-      level:
-        org.hibernate.SQL: DEBUG
-        org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-    file:
-      name: logs/ecommerce-app.log
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        open-in-view: false
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  file:
+    name: logs/ecommerce-app.log
+
 jwt:
-  secret: Q3VzdG9tLVNwcmluZy1Cb290LUpXVFNlY3JldC1LZXktMjAyNQpBdXRoZW50aWNhdGlvbg==
+  secret: uC6HDLZloaChtEIxd4uYKWPDjX3S2mhUE0skNc60cW4=

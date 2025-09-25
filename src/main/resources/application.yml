@@ -1,27 +1,48 @@
 spring:
   application:
-      name: backend
+    name: backend
 
-#default profile
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ecommerce
+    username: root
+    password: oms123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        open-in-view: false
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: snehajpatil624@gmail.com
+    password: fejl hpca qvqd zmsz
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8080
+
+jwt:
+  secret: HexkXJFc2QUSAr1lY83kK8V6jfFFA9JG6RxwRWKaftY=
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+# default profile
 ---
 spring:
   config:
     activate:
       on-profile: default
-datasource:
-  driver-class-name: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/ecommerce_backend
-  username: spring_user
-  password: sonab@26
-jpa:
-  hibernate:
-    ddl-auto: update
-  show-sql: true
-  properties:
-    hibernate:
-      format-sql: true
-      open-view: false
-  logging:
-    level:
-      org.hibernate.SQL: DEBUG
-      org.hibernate.type.descriptor.sql.BasicBinder: TRACE
