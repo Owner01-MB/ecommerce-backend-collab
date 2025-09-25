@@ -4,9 +4,9 @@ spring:
       on-profile: dev
 
   datasource:
-    url: jdbc:mysql://localhost:3306/ecommerce
-    username: root
-    password: oms123
+    url: jdbc:mysql://localhost:3306/ecommerce_backend
+    username: spring_user
+    password: sonab@26
 
   jpa:
     hibernate:

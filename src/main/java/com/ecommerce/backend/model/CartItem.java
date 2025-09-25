@@ -19,35 +19,4 @@ public class CartItem {
   private double discount;
   private double productPrice;
 
-  public Long getCartItemId() {
-    return cartItemId;
-  }
-
-  public void setCartItemId(Long cartItemId) {
-    this.cartItemId = cartItemId;
-  }
-
-  public Integer getQuantity() {
-    return quantity;
-  }
-
-  public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
-  }
-
-  public double getDiscount() {
-    return discount;
-  }
-
-  public void setDiscount(double discount) {
-    this.discount = discount;
-  }
-
-  public double getProductPrice() {
-    return productPrice;
-  }
-
-  public void setProductPrice(double productPrice) {
-    this.productPrice = productPrice;
-  }
 }
