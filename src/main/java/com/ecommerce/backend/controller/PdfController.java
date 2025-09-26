@@ -3,7 +3,7 @@ package com.ecommerce.backend.controller;
 import com.ecommerce.backend.dto.ProductDto;
 import com.ecommerce.backend.service.EmailService;
 import com.ecommerce.backend.service.PdfService;
-import com.ecommerce.backend.service.ProductService;;
+import com.ecommerce.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

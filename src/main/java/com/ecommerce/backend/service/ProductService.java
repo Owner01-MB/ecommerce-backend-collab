@@ -89,7 +89,7 @@ public class ProductService implements ProductImpl {
 
     @Override
     public byte[] generateProductsPdf() throws DocumentException {
-        List<ProductDto> products = getAllProducts(); // existing method वापरून data fetch
+        List<ProductDto> products = getAllProducts();
 
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
