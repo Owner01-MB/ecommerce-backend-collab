@@ -4,11 +4,17 @@ import com.ecommerce.backend.dto.ProductDto;
 import com.ecommerce.backend.model.Product;
 import com.ecommerce.backend.repository.ProductRepo;
 import com.ecommerce.backend.service.serviceImpl.ProductImpl;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +32,6 @@ public class ProductService implements ProductImpl {
         if (productDto.getProductId() != null && productRepo.existsById(productDto.getProductId())) {
             Product existingProduct = productRepo.findById(productDto.getProductId()).get();
             existingProduct.setProductName(productDto.getProductName());
-            existingProduct.setImage(productDto.getImage());
             existingProduct.setDescription(productDto.getDescription());
             existingProduct.setQuantity(productDto.getQuantity());
             existingProduct.setPrice(productDto.getPrice());
@@ -38,7 +43,6 @@ public class ProductService implements ProductImpl {
         } else {
             Product newProduct = new Product();
             newProduct.setProductName(productDto.getProductName());
-            newProduct.setImage(productDto.getImage());
             newProduct.setDescription(productDto.getDescription());
             newProduct.setQuantity(productDto.getQuantity());
             newProduct.setPrice(productDto.getPrice());
@@ -60,7 +64,6 @@ public class ProductService implements ProductImpl {
             ProductDto dto = new ProductDto();
             dto.setProductId(product.getProductId());
             dto.setProductName(product.getProductName());
-            dto.setImage(product.getImage());
             dto.setDescription(product.getDescription());
             dto.setQuantity(product.getQuantity());
             dto.setPrice(product.getPrice());
@@ -82,5 +85,41 @@ public class ProductService implements ProductImpl {
             logger.error("Product not found with ID: {}", id);
             throw new Exception("Id not Found!!!");
         }
+    }
+
+    @Override
+    public byte[] generateProductsPdf() throws DocumentException {
+        List<ProductDto> products = getAllProducts(); // existing method वापरून data fetch
+
+        Document document = new Document();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        PdfWriter.getInstance(document, out);
+        document.open();
+
+        document.add(new Paragraph("Product List"));
+        document.add(new Paragraph(" "));
+
+        PdfPTable table = new PdfPTable(6);
+        table.addCell("ID");
+        table.addCell("Name");
+        table.addCell("Description");
+        table.addCell("Quantity");
+        table.addCell("Price");
+        table.addCell("Discount");
+
+        for (ProductDto product : products) {
+            table.addCell(String.valueOf(product.getProductId()));
+            table.addCell(product.getProductName());
+            table.addCell(product.getDescription());
+            table.addCell(String.valueOf(product.getQuantity()));
+            table.addCell(String.valueOf(product.getPrice()));
+            table.addCell(String.valueOf(product.getDiscount()));
+        }
+
+        document.add(table);
+        document.close();
+
+        return out.toByteArray();
     }
 }

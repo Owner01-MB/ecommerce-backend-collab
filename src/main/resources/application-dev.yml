@@ -5,8 +5,8 @@ spring:
 
   datasource:
     url: jdbc:mysql://localhost:3306/ecommerce_backend
-    username: spring_user
-    password: sonab@26
+    username: root
+    password: oms123
 
   jpa:
     hibernate:
