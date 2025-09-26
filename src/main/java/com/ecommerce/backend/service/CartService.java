@@ -16,8 +16,8 @@ import java.util.Optional;
 @Service
 public class CartService implements CartImpl {
 
-  @Autowired
-  private CartRepo cartRepo;
+    @Autowired
+    private CartRepo cartRepo;
 
     Logger logger = LoggerFactory.getLogger(CartService.class);
 
@@ -54,6 +54,7 @@ public class CartService implements CartImpl {
         }
         return cartDtos;
     }
+
     @Override
     public void deleteCartById(Long id) throws Exception {
         try {

@@ -16,8 +16,8 @@ import java.util.Optional;
 @Service
 public class AddressService implements AddressImpl {
 
-  @Autowired
-  private AddressRepo addressRepo;
+    @Autowired
+    private AddressRepo addressRepo;
 
     Logger logger = LoggerFactory.getLogger(AddressService.class);
 

@@ -16,8 +16,8 @@ import java.util.Optional;
 @Service
 public class CartItemService implements CartItemImpl {
 
-  @Autowired
-  private CartItemRepo cartItemRepo;
+    @Autowired
+    private CartItemRepo cartItemRepo;
 
     private static final Logger logger = LoggerFactory.getLogger(CartItemService.class);
 

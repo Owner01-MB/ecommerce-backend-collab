@@ -22,8 +22,8 @@ import java.util.Optional;
 @Service
 public class ProductService implements ProductImpl {
 
-  @Autowired
-  private ProductRepo productRepo;
+    @Autowired
+    private ProductRepo productRepo;
 
     private static final Logger logger = LoggerFactory.getLogger(ProductService.class);
 
@@ -89,37 +89,53 @@ public class ProductService implements ProductImpl {
 
     @Override
     public byte[] generateProductsPdf() throws DocumentException {
+        logger.info("Starting PDF generation for products...");
+
         List<ProductDto> products = getAllProducts();
+        logger.info("Fetched {} products from database for PDF generation", products.size());
 
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-        PdfWriter.getInstance(document, out);
-        document.open();
+        try {
+            PdfWriter.getInstance(document, out);
+            document.open();
 
-        document.add(new Paragraph("Product List"));
-        document.add(new Paragraph(" "));
+            logger.debug("Adding PDF header...");
+            document.add(new Paragraph("Product List"));
+            document.add(new Paragraph(" "));
 
-        PdfPTable table = new PdfPTable(6);
-        table.addCell("ID");
-        table.addCell("Name");
-        table.addCell("Description");
-        table.addCell("Quantity");
-        table.addCell("Price");
-        table.addCell("Discount");
+            PdfPTable table = new PdfPTable(6);
+            table.addCell("ID");
+            table.addCell("Name");
+            table.addCell("Description");
+            table.addCell("Quantity");
+            table.addCell("Price");
+            table.addCell("Discount");
 
-        for (ProductDto product : products) {
-            table.addCell(String.valueOf(product.getProductId()));
-            table.addCell(product.getProductName());
-            table.addCell(product.getDescription());
-            table.addCell(String.valueOf(product.getQuantity()));
-            table.addCell(String.valueOf(product.getPrice()));
-            table.addCell(String.valueOf(product.getDiscount()));
+            logger.debug("Adding product rows to PDF table...");
+            for (ProductDto product : products) {
+                table.addCell(String.valueOf(product.getProductId()));
+                table.addCell(product.getProductName());
+                table.addCell(product.getDescription());
+                table.addCell(String.valueOf(product.getQuantity()));
+                table.addCell(String.valueOf(product.getPrice()));
+                table.addCell(String.valueOf(product.getDiscount()));
+            }
+
+            document.add(table);
+            logger.info("PDF table with product data added successfully");
+
+        } catch (Exception e) {
+            logger.error("Error occurred while generating products PDF", e);
+            throw e;
+        } finally {
+            document.close();
         }
 
-        document.add(table);
-        document.close();
+        byte[] pdfBytes = out.toByteArray();
+        logger.info("PDF generation completed. Size: {} bytes", pdfBytes.length);
 
-        return out.toByteArray();
+        return pdfBytes;
     }
 }

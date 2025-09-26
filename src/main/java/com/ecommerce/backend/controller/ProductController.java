@@ -2,17 +2,15 @@ package com.ecommerce.backend.controller;
 
 import com.ecommerce.backend.dto.ProductDto;
 import com.ecommerce.backend.service.ProductService;
+import com.itextpdf.text.DocumentException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.itextpdf.text.DocumentException;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -64,12 +62,16 @@ public class ProductController {
 
     @GetMapping("/download/products/pdf")
     public ResponseEntity<byte[]> downloadProductsPdf() throws DocumentException {
+        logger.info("Starting PDF download request for products...");
+
         byte[] pdfBytes = productService.generateProductsPdf();
+        logger.info("Generated PDF with size: {} bytes", pdfBytes.length);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
         headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=products.pdf");
 
+        logger.info("Returning products PDF as downloadable response");
         return ResponseEntity
                 .ok()
                 .headers(headers)
