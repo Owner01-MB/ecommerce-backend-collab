@@ -1,6 +1,7 @@
 package com.ecommerce.backend.controller;
 
 import com.ecommerce.backend.dto.ProductDto;
+import com.ecommerce.backend.exception.PdfGenerationException;
 import com.ecommerce.backend.service.EmailService;
 import com.ecommerce.backend.service.PdfService;
 import com.ecommerce.backend.service.ProductService;
@@ -28,13 +29,9 @@ public class PdfController {
     @GetMapping("/send/products/pdf")
     public String sendProductsPdfEmail() {
         try {
-            logger.info("Fetching all products...");
             List<ProductDto> products = productService.getAllProducts();
-
-            logger.info("Generating PDF for {} products", products.size());
             byte[] pdfBytes = pdfService.generateProductsPdf(products);
 
-            logger.info("Sending email with PDF attachment...");
             emailService.sendEmailWithAttachment(
                     "snehapatil24.omsoft@gmail.com",
                     "Product List PDF",
@@ -43,11 +40,14 @@ public class PdfController {
                     "products.pdf"
             );
 
-            logger.info("Email sent successfully with products PDF");
             return "Email sent successfully!";
+        } catch (PdfGenerationException e) {
+            logger.error("PDF generation failed", e);
+            return "Error generating PDF: " + e.getMessage();
         } catch (Exception e) {
-            logger.error("Error occurred while sending products PDF email", e);
+            logger.error("Other error occurred while sending email", e);
             return "Error sending email: " + e.getMessage();
         }
     }
+
 }
